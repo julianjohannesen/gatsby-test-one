@@ -18,8 +18,13 @@ module.exports = {
     author: 'Julian Johannesen'
   },
   plugins: [
+
+    // Edit header
+    'gatsby-plugin-react-helmet',
+    
     // Enable Sass
     'gatsby-plugin-sass',
+
     // Enable file system access via Gatsby's Graphql API
     {
       resolve: 'gatsby-source-filesystem',
@@ -28,8 +33,30 @@ module.exports = {
         path: `${__dirname}/src/`
       }
     },
+
+    // Enable image editing with Sharp
+    'gatsby-plugin-sharp',
+    
     // Enable processing of markdown files via Gatsby's 
     // Graphql API using Remark
-    'gatsby-transformer-remark'
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          // Enable processing of images with relative
+          // paths
+          'gatsby-remark-images-relative',
+          {
+            // Enable processing of images
+            resolve: 'gatsby-remark-images',
+            options: {
+              // Enable image resizing with Sharp
+              maxWidth: 900,
+              linkImagesToOriginal: false
+            }
+          }
+        ]
+      }
+    }
   ]
 }

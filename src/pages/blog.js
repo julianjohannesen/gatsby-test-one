@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from 'gatsby'
 // Enable Graphql and static query
 import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/layout'
 
 export default function BlogPage() {
 	
-	// Store the Graphql query result
+	// Store the Graphql query result. In the query
+	// I'm grabbing the post frontmatter, and the
+	// full post
 	const data = useStaticQuery(graphql`
 		query {
 			allMarkdownRemark {
@@ -17,21 +20,36 @@ export default function BlogPage() {
 						}
 						html
 						excerpt
+						fields {
+							slug
+						}
 					}
 				}
 			}
 		}
 	`)
-    console.log(data.allMarkdownRemark.edges)
+	console.log("This is the edges array", data.allMarkdownRemark.edges)
+	
+	// For convenience
+	const edges = data.allMarkdownRemark.edges
 	
 	// Map over the edges array to generate posts
 	const generatePosts = () => {
 		// If there are any edges, then ...
-		if(data.allMarkdownRemark.edges.length > 0) {
-			// Map over the edge and return an array 
+		if(edges.length > 0) {
+			// Map over the edges and return an array 
 			// of posts
-			return data.allMarkdownRemark.edges.map( (edge,index) => (
-			<li key={index}>{edge.node.frontmatter.title}</li>
+			return edges.map( (edge,index) => (
+			<li key={index}>
+				<h2>
+					<Link to={`/blog/${edge.node.fields.slug}`}>
+						{edge.node.frontmatter.title}
+					</Link>
+				</h2>
+				<h3>
+					{edge.node.frontmatter.date}
+				</h3>
+			</li>
 		))}
 		// Otherwise,  
 		else {
