@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 // Enable Graphql and static query
 import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/layout'
+import Head from '../components/head'
 
 export default function BlogPage() {
 	
@@ -28,7 +29,7 @@ export default function BlogPage() {
 			}
 		}
 	`)
-	console.log("This is the edges array", data.allMarkdownRemark.edges)
+	// console.log("This is the edges array", data.allMarkdownRemark.edges)
 	
 	// For convenience
 	const edges = data.allMarkdownRemark.edges
@@ -60,6 +61,7 @@ export default function BlogPage() {
 
 	return (
 		<Layout>
+		<Head />
 			<main>
 				<ul>
 					{generatePosts()}

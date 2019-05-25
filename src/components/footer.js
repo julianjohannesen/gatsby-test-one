@@ -13,7 +13,7 @@ export default function PageFooter() {
         }
     `)
     return (
-        <footer className='footer'>
+        <footer>
             <p>Created by {data.site.siteMetadata.author}, copyright 2019</p>
         </footer>
     )
