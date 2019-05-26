@@ -43,6 +43,9 @@ module.exports = {
       },
     },
 
+    // Enable offline loading with service worker
+    `gatsby-plugin-offline`
+
     // Enable use of Styled Components
     {
       resolve: `gatsby-plugin-styled-components`,
