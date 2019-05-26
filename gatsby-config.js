@@ -19,15 +19,17 @@ module.exports = {
   },
   plugins: [
 
-    // Enable the manifest plugin
+    // Enable the manifest plugin (this must appear
+    // before the offline plugin)
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "GatsbyJS",
-        short_name: "GatsbyJS",
+        name: "Julian Johannesen",
+        short_name: "JJ",
         start_url: "/",
-        background_color: "#6b37bf",
-        theme_color: "#6b37bf",
+        background_color: "#ffffff",
+        theme_color: "#ffffff",
+        theme_color_in_head: true, // If set to false, this will avoid adding theme-color meta tag.
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: "standalone",
@@ -35,11 +37,13 @@ module.exports = {
         // An optional attribute which provides support for CORS check.
         // If you do not provide a crossOrigin option, it will skip CORS for manifest.
         // Any invalid keyword or empty string defaults to `anonymous`
+        include_favicon: true, // If set to false, this will exclude favicon link tag
         crossOrigin: `use-credentials`,
+        cache_busting_mode: `none`, // `query`(default), `name`, or `none`
       },
     },
 
-    // Enable use of Style Components
+    // Enable use of Styled Components
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
@@ -47,7 +51,7 @@ module.exports = {
       }
     },
 
-    // Edit header
+    // Edit header information with Helmet
     'gatsby-plugin-react-helmet',
     
     // Enable Sass

@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/layout'
 import Head from '../components/head'
+import Helmet from 'react-helmet'
 
 export default function BlogPage() {
 	
@@ -61,7 +62,11 @@ export default function BlogPage() {
 
 	return (
 		<Layout>
-		<Head />
+			<Head />
+			<Helmet>
+				<title>Blog</title>
+			</Helmet>
+
 			<main>
 				<ul>
 					{generatePosts()}

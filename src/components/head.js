@@ -4,18 +4,34 @@ import Helmet from 'react-helmet'
 export default function Head() {
     return (
         <div>
-            <Helmet 
+            <Helmet
                 encodeSpecialCharacters={true}
-                defaultTitle="Gatsby Test" 
-                titleTemplate="%s | Gatsby Test"
+                titleTemplate="%s | Julian Johannesen"
+                defaultTitle="Julian Johannesen"
                 onChangeClientState={(newState, addedTags, removedTags) => console.log(newState, addedTags, removedTags)}
             >
+                {/* Enable Google's AMP standard */}
                 <html lang="en" amp />
+                
+                {/* Base and canonical URLs 
                 <base target="_blank" href="https://awesome-northcutt-7e274f.netlify.com/" />
                 <link rel="canonical" href="https://awesome-northcutt-7e274f.netlify.com/" />
+                
+                {/* Site info */}
+                <meta name="description" content="Julian Johannesen is a front-end web developer living and working in the Boston area." />
+                <meta name="keywords" cpntent="portfolio,blog,personal,resume,professional" />
 
-                <link rel="apple-touch-icon" href="https://awesome-northcutt-7e274f.netlify.com/apple-touch-icon-57x57.png" />
-                <link rel="apple-touch-icon" sizes="72x72" href="https://awesome-northcutt-7e274f.netlify.com/apple-touch-icon-72x72.png" />
+                <meta property="og:site_name" content="Julian Johannesen" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://julianjohannesen.com" />
+                <meta property="og:locale" content="en" />
+
+                <meta property="og:title" content="Julian Johannesen" />
+                <meta property="og:description" content="Julian Johannesen is a front-end web developer living and working in the Boston area.." />
+                <meta property="og:image" content="" />
+                <meta property="og:image:secure_url" content="" />
+                <meta property="og:image:width" content="512" />
+                <meta property="og:image:height" content="512" />
             </Helmet>
         </div>
     )
