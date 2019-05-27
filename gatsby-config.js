@@ -46,6 +46,9 @@ module.exports = {
     // Enable offline loading with service worker
     `gatsby-plugin-offline`,
 
+    // Edit header information with Helmet
+    'gatsby-plugin-react-helmet',
+
     // Enable use of Styled Components
     {
       resolve: `gatsby-plugin-styled-components`,
@@ -54,11 +57,17 @@ module.exports = {
       }
     },
 
-    // Edit header information with Helmet
-    'gatsby-plugin-react-helmet',
-    
     // Enable Sass
     'gatsby-plugin-sass',
+
+    // Enable Typography library
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      }
+  },
+
 
     // Enable file system access via Gatsby's Graphql API
     {
@@ -68,6 +77,7 @@ module.exports = {
         path: `${__dirname}/src/`
       }
     },
+
 
     // Enable image editing with Sharp
     'gatsby-plugin-sharp',
